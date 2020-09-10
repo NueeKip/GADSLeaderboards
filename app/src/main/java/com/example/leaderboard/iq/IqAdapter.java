@@ -43,12 +43,10 @@ public class IqAdapter extends RecyclerView.Adapter<IqAdapter.IqAdapterVH> {
         String name = iqResponse.getName();
         String score = String.valueOf(iqResponse.getScore());
         String country = iqResponse.getCountry();
-        String baseUrl = iqResponse.getBadgeUrl();
 
         holder.name.setText(name);
         holder.score.setText(score);
         holder.country.setText(country);
-        holder.baseUrl.setText(baseUrl);
 
 
     }
@@ -69,7 +67,6 @@ public class IqAdapter extends RecyclerView.Adapter<IqAdapter.IqAdapterVH> {
             name = itemView.findViewById(R.id.name);
             score =itemView.findViewById(R.id.score);
             country = itemView.findViewById(R.id.country);
-            baseUrl = itemView.findViewById(R.id.baseUrl);
         }
     }
 }

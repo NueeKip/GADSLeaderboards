@@ -1,12 +1,23 @@
 package com.example.leaderboard.submit;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,9 +37,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Submit extends AppCompatActivity {
 
-    String name,lastName,email,gitUrl;
     EditText e1,e2,e3,e4;
-    TextView res;
+    Dialog myDialog;
+    Button button;
+
 
 
     @Override
@@ -40,8 +52,9 @@ public class Submit extends AppCompatActivity {
         e2 = findViewById(R.id.secondName);
         e3 = findViewById(R.id.emailAddress);
         e4 = findViewById(R.id.githubUrl);
-
-        findViewById(R.id.response).setOnClickListener(view -> {PostData(
+//        button = findViewById(R.id.confirm_submit);
+//        myDialog = new Dialog(this);
+        findViewById(R.id.confirm_submit).setOnClickListener(view -> {PostData(
         e1.getText().toString(),
             e2.getText().toString(),
             e3.getText().toString(),
@@ -49,13 +62,23 @@ public class Submit extends AppCompatActivity {
         );
         });
 
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                myDialog.setContentView(R.layout.popup_confirm);
+//                myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            }
+//        });
 
+
+
+        
 
     }
 
     public void PostData(String name,String lastName, String email,String gitUrl) {
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://docs.google.com/forms/d/e")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://docs.google.com/forms/d/e/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -63,7 +86,7 @@ public class Submit extends AppCompatActivity {
         SubmitService submitService = retrofit.create(SubmitService.class);
 
 
-        //DataSet dataSet = new DataSet(name,lastName,email,gitUrl);
+        //DataSet dataSet = new DataSet(name,lastNamess,email,gitUrl);
         //Call<DataSet> call = submitService.PostData(dataSet);
 
         Call<DataSet> call = submitService.PostData(
@@ -81,6 +104,9 @@ public class Submit extends AppCompatActivity {
 
                 if(response.isSuccessful()){
                     Toast.makeText(Submit.this,"Sucess", Toast.LENGTH_SHORT).show();
+                    myDialog.create();
+
+
 
                     Log.e("Sucess",response.body().toString());
                 }
@@ -95,16 +121,5 @@ public class Submit extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
     }
-
-//    public Drawable getBackground() {
-//        return findViewById(R.layout.sucess);
-//    }
 }

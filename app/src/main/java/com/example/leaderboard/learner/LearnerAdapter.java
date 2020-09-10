@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.leaderboard.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.internal.$Gson$Preconditions;
 
 
 import java.util.List;
@@ -30,25 +33,28 @@ public class LearnerAdapter extends RecyclerView.Adapter<com.example.leaderboard
     @NonNull
     @Override
     public com.example.leaderboard.learner.LearnerAdapter.LearnerAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        return new com.example.leaderboard.learner.LearnerAdapter.LearnerAdapterVH(LayoutInflater.from(context).inflate(R.layout.learner_row,parent,false));
+       context = parent.getContext();
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View view =layoutInflater.inflate(R.layout.learner_row,parent,false);
+        return new LearnerAdapterVH(view);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull com.example.leaderboard.learner.LearnerAdapter.LearnerAdapterVH holder, int position) {
 
-        LearnerResponse learnerResponse = learnerResponseList.get(position);
 
+               LearnerResponse learnerResponse = learnerResponseList.get(position);
         String name = learnerResponse.getName();
-        String  hours = String.valueOf(learnerResponse.getHours());
         String country = learnerResponse.getCountry();
-        String baseUrl = learnerResponse.getBargeUrl();
+        String hours = String.valueOf(learnerResponse.getHours());
+
 
         holder.name.setText(name);
         holder.hours.setText(hours);
         holder.country.setText(country);
-        holder.baseUrl.setText(baseUrl);
+
+
 
 
     }
@@ -62,14 +68,13 @@ public class LearnerAdapter extends RecyclerView.Adapter<com.example.leaderboard
         TextView name;
         TextView hours;
         TextView country;
-        TextView baseUrl;
+
 
         public LearnerAdapterVH(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             hours = itemView.findViewById(R.id.hours);
             country = itemView.findViewById(R.id.country);
-            baseUrl = itemView.findViewById(R.id.baseUrl);
         }
     }
 }

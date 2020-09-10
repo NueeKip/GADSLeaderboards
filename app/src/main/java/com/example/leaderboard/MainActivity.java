@@ -24,9 +24,16 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private Button button;
 
+
+
+    /****** Create Thread that will sleep for 5 seconds****/
+
+    // start thread
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         button = findViewById(R.id.submit);

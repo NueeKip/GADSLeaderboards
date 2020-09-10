@@ -78,7 +78,7 @@ android:padding="10dp"
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/firstName"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="30dp"
                     android:background="#FFFFFF"
                     android:gravity="center"
@@ -137,22 +137,24 @@ android:padding="10dp"
             <com.google.android.material.textfield.TextInputEditText
                 android:gravity="center"
                 android:id="@+id/githubUrl"
-                android:layout_width="200dp"
-                android:layout_height="20dp"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
                 android:background="#FFFFFF"
-                android:hint="Project"
+                android:hint="Project on Github(Url)"
                 android:padding="15dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/finalSubmit"
+            android:id="@+id/confirm_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/submit_button"
-            android:text="Button"
-            android:onClick="PostData"/>
+            android:text="Submit"
+
+
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
