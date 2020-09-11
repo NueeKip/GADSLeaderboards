@@ -1,4 +1,5 @@
-# GADSLeaderboards
+# Google Africa Developer Leaderboards Android Application
+Impovements and changes on logic and UI are due!
 This is an application to retrieve datas json format and parse it to this android application.
 
 
