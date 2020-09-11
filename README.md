@@ -1,4 +1,5 @@
 # GADSLeaderboards
+This is an application to retrieve data from REST API as json format parse it to this android application.
 
 
 
