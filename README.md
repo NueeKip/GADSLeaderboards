@@ -1,5 +1,5 @@
 # GADSLeaderboards
-This is an application to retrieve data from REST API as json format parse it to this android application.
+This is an application to retrieve datas json format and parse it to this android application.
 
 
 
